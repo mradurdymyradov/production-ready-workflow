@@ -1,0 +1,636 @@
+{
+  "name": "My workflow 57",
+  "nodes": [
+    {
+      "parameters": {
+        "content": "## Validate",
+        "height": 208,
+        "width": 176,
+        "color": 7
+      },
+      "type": "n8n-nodes-base.stickyNote",
+      "position": [
+        -272,
+        -224
+      ],
+      "typeVersion": 1,
+      "id": "d872c2be-ce61-42c7-8be7-fd31da24034b",
+      "name": "Sticky Note1"
+    },
+    {
+      "parameters": {
+        "content": "## Log",
+        "height": 208,
+        "width": 176,
+        "color": 2
+      },
+      "type": "n8n-nodes-base.stickyNote",
+      "position": [
+        -80,
+        -224
+      ],
+      "typeVersion": 1,
+      "id": "57a4ae81-8eee-4f53-b97a-de239433ec09",
+      "name": "Sticky Note2"
+    },
+    {
+      "parameters": {
+        "content": "## Processing & logic",
+        "height": 208,
+        "width": 592,
+        "color": 7
+      },
+      "type": "n8n-nodes-base.stickyNote",
+      "position": [
+        304,
+        -224
+      ],
+      "typeVersion": 1,
+      "id": "e4a23c53-0290-47cb-bc95-d266ad7fc71d",
+      "name": "Sticky Note3"
+    },
+    {
+      "parameters": {
+        "content": "## Log",
+        "height": 208,
+        "width": 176,
+        "color": 2
+      },
+      "type": "n8n-nodes-base.stickyNote",
+      "position": [
+        1296,
+        -224
+      ],
+      "typeVersion": 1,
+      "id": "a09b8f35-2d3a-48bb-ba39-0c639ce70b92",
+      "name": "Sticky Note4"
+    },
+    {
+      "parameters": {
+        "content": "## Log",
+        "height": 208,
+        "width": 176,
+        "color": 2
+      },
+      "type": "n8n-nodes-base.stickyNote",
+      "position": [
+        912,
+        -224
+      ],
+      "typeVersion": 1,
+      "id": "7f21ceae-adf5-45fe-93a0-489a7878a03a",
+      "name": "Sticky Note5"
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "options": {
+            "caseSensitive": true,
+            "leftValue": "",
+            "typeValidation": "strict",
+            "version": 2
+          },
+          "conditions": [
+            {
+              "id": "e6678bd7-1f01-489b-bcdc-cf8959ef0b07",
+              "leftValue": "",
+              "rightValue": "",
+              "operator": {
+                "type": "string",
+                "operation": "equals",
+                "name": "filter.operator.equals"
+              }
+            }
+          ],
+          "combinator": "and"
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 2.2,
+      "position": [
+        -240,
+        -160
+      ],
+      "id": "3d185a41-1a12-4aa0-aaab-ac6f2e1b7a2b",
+      "name": "If"
+    },
+    {
+      "parameters": {
+        "options": {}
+      },
+      "type": "@n8n/n8n-nodes-langchain.agent",
+      "typeVersion": 2.2,
+      "position": [
+        336,
+        -160
+      ],
+      "id": "0ab758f7-fb7b-4c26-9e98-6eb96c46c764",
+      "name": "AI Agent",
+      "retryOnFail": true,
+      "onError": "continueErrorOutput"
+    },
+    {
+      "parameters": {
+        "jsCode": "// Loop over input items and add a new field called 'myNewField' to the JSON of each one\nfor (const item of $input.all()) {\n  item.json.myNewField = 1;\n}\n\nreturn $input.all();"
+      },
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        624,
+        -160
+      ],
+      "id": "75d49a92-4d70-4b9e-8443-bb6550b67e83",
+      "name": "Code in JavaScript"
+    },
+    {
+      "parameters": {
+        "url": "***REDACTED***",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        768,
+        -160
+      ],
+      "id": "2d3b66eb-5db5-4b7f-b882-5e02e66a7b69",
+      "name": "HTTP Request"
+    },
+    {
+      "parameters": {
+        "content": "## Trigger",
+        "height": 208,
+        "width": 176,
+        "color": 7
+      },
+      "type": "n8n-nodes-base.stickyNote",
+      "position": [
+        -464,
+        -224
+      ],
+      "typeVersion": 1,
+      "id": "d079d834-63cc-44ba-9757-fe0a380e3543",
+      "name": "Sticky Note"
+    },
+    {
+      "parameters": {},
+      "type": "n8n-nodes-base.noOp",
+      "typeVersion": 1,
+      "position": [
+        -32,
+        64
+      ],
+      "id": "d094d530-c355-4810-b789-4b53ed393337",
+      "name": "Unvalidated"
+    },
+    {
+      "parameters": {
+        "content": "## Action",
+        "height": 208,
+        "width": 176,
+        "color": 7
+      },
+      "type": "n8n-nodes-base.stickyNote",
+      "position": [
+        1104,
+        -224
+      ],
+      "typeVersion": 1,
+      "id": "233a43d4-ac75-4195-b7b6-79e123a9c64c",
+      "name": "Sticky Note6"
+    },
+    {
+      "parameters": {
+        "options": {}
+      },
+      "type": "n8n-nodes-base.respondToWebhook",
+      "typeVersion": 1.4,
+      "position": [
+        1152,
+        -160
+      ],
+      "id": "947f2b4b-bbf5-49ba-befc-dd89f13ce4da",
+      "name": "Respond to Webhook"
+    },
+    {
+      "parameters": {
+        "path": "***REDACTED***",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.webhook",
+      "typeVersion": 2.1,
+      "position": [
+        -432,
+        -160
+      ],
+      "id": "c568fc41-115d-4b22-ac53-6c7231fcf91f",
+      "name": "Webhook",
+      "webhookId": "***REDACTED***"
+    },
+    {
+      "parameters": {
+        "content": "## Validation Failure",
+        "height": 208,
+        "width": 592,
+        "color": 7
+      },
+      "type": "n8n-nodes-base.stickyNote",
+      "position": [
+        -80,
+        0
+      ],
+      "typeVersion": 1,
+      "id": "e5f311c1-3d78-4043-9768-db00dcffc071",
+      "name": "Sticky Note8"
+    },
+    {
+      "parameters": {
+        "respondWith": "json",
+        "options": {
+          "responseCode": 200
+        }
+      },
+      "type": "n8n-nodes-base.respondToWebhook",
+      "typeVersion": 1.4,
+      "position": [
+        384,
+        64
+      ],
+      "id": "390f57cb-17ab-4a8e-8ff1-458b954dca62",
+      "name": "Respond"
+    },
+    {
+      "parameters": {
+        "from": "224",
+        "to": "322",
+        "message": "1234",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.twilio",
+      "typeVersion": 1,
+      "position": [
+        96,
+        64
+      ],
+      "id": "bff90afd-351d-4075-84c7-266081eb9233",
+      "name": "Critical Notification",
+      "credentials": "***REDACTED***"
+    },
+    {
+      "parameters": {},
+      "type": "n8n-nodes-base.noOp",
+      "typeVersion": 1,
+      "position": [
+        624,
+        64
+      ],
+      "id": "5734cec0-ec59-43fb-aa2f-2ed04f399ce9",
+      "name": "Unvalidated1"
+    },
+    {
+      "parameters": {
+        "content": "## Service Failure",
+        "height": 208,
+        "width": 592,
+        "color": 7
+      },
+      "type": "n8n-nodes-base.stickyNote",
+      "position": [
+        576,
+        0
+      ],
+      "typeVersion": 1,
+      "id": "f9cd86d0-e408-41a6-b294-67518d37e501",
+      "name": "Sticky Note9"
+    },
+    {
+      "parameters": {
+        "sendTo": "543",
+        "subject": "543",
+        "message": "5432",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.gmail",
+      "typeVersion": 2.1,
+      "position": [
+        752,
+        64
+      ],
+      "id": "e15553f7-a292-4c77-a979-09888113673e",
+      "name": "Send a message",
+      "webhookId": "***REDACTED***",
+      "credentials": "***REDACTED***"
+    },
+    {
+      "parameters": {
+        "options": {}
+      },
+      "type": "n8n-nodes-base.respondToWebhook",
+      "typeVersion": 1.4,
+      "position": [
+        1040,
+        64
+      ],
+      "id": "9a8323a1-5f81-4a5c-b3af-7f98171d35d8",
+      "name": "Respond1"
+    },
+    {
+      "parameters": {
+        "tableId": "***REDACTED***"
+      },
+      "type": "n8n-nodes-base.supabase",
+      "typeVersion": 1,
+      "position": [
+        240,
+        64
+      ],
+      "id": "3f34b808-aa24-4570-9f8c-ea84bc48572c",
+      "name": "Create a row1",
+      "credentials": "***REDACTED***"
+    },
+    {
+      "parameters": {
+        "operation": "update",
+        "tableId": "***REDACTED***"
+      },
+      "type": "n8n-nodes-base.supabase",
+      "typeVersion": 1,
+      "position": [
+        960,
+        -160
+      ],
+      "id": "0af5b9af-54b2-4b26-88b2-5ad35e3c23b6",
+      "name": "Update a row",
+      "credentials": "***REDACTED***"
+    },
+    {
+      "parameters": {
+        "operation": "update",
+        "tableId": "***REDACTED***"
+      },
+      "type": "n8n-nodes-base.supabase",
+      "typeVersion": 1,
+      "position": [
+        1344,
+        -160
+      ],
+      "id": "c5b0d14a-8ea7-4fe4-8eec-2f80cfafcc48",
+      "name": "Update a row1",
+      "credentials": "***REDACTED***"
+    },
+    {
+      "parameters": {
+        "operation": "update",
+        "tableId": "***REDACTED***"
+      },
+      "type": "n8n-nodes-base.supabase",
+      "typeVersion": 1,
+      "position": [
+        896,
+        64
+      ],
+      "id": "da0d8ce6-c653-4782-b8c6-0791a2b12ca1",
+      "name": "Update a row2",
+      "credentials": "***REDACTED***"
+    },
+    {
+      "parameters": {
+        "tableId": "***REDACTED***"
+      },
+      "type": "n8n-nodes-base.supabase",
+      "typeVersion": 1,
+      "position": [
+        -32,
+        -160
+      ],
+      "id": "1b67f063-22c2-46d5-8319-46c289b5bf07",
+      "name": "Create a row",
+      "credentials": "***REDACTED***"
+    },
+    {
+      "parameters": {
+        "operation": "get",
+        "tableId": "***REDACTED***"
+      },
+      "type": "n8n-nodes-base.supabase",
+      "typeVersion": 1,
+      "position": [
+        144,
+        -160
+      ],
+      "id": "5fdd8b87-5741-46a6-bd0c-970ed8717731",
+      "name": "Get a row",
+      "credentials": "***REDACTED***"
+    },
+    {
+      "parameters": {
+        "content": "## Retrieve",
+        "height": 208,
+        "width": 176,
+        "color": 7
+      },
+      "type": "n8n-nodes-base.stickyNote",
+      "position": [
+        112,
+        -224
+      ],
+      "typeVersion": 1,
+      "id": "c7c46669-b8c0-464d-932b-3484898b3bf3",
+      "name": "Sticky Note7"
+    }
+  ],
+  "pinData": {},
+  "connections": {
+    "If": {
+      "main": [
+        [
+          {
+            "node": "Create a row",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Unvalidated",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "AI Agent": {
+      "main": [
+        [
+          {
+            "node": "Code in JavaScript",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Unvalidated1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Code in JavaScript": {
+      "main": [
+        [
+          {
+            "node": "HTTP Request",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "HTTP Request": {
+      "main": [
+        [
+          {
+            "node": "Update a row",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Unvalidated": {
+      "main": [
+        [
+          {
+            "node": "Critical Notification",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Respond to Webhook": {
+      "main": [
+        [
+          {
+            "node": "Update a row1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Webhook": {
+      "main": [
+        [
+          {
+            "node": "If",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Critical Notification": {
+      "main": [
+        [
+          {
+            "node": "Create a row1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Unvalidated1": {
+      "main": [
+        [
+          {
+            "node": "Send a message",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Send a message": {
+      "main": [
+        [
+          {
+            "node": "Update a row2",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Create a row1": {
+      "main": [
+        [
+          {
+            "node": "Respond",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Update a row": {
+      "main": [
+        [
+          {
+            "node": "Respond to Webhook",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Update a row2": {
+      "main": [
+        [
+          {
+            "node": "Respond1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Create a row": {
+      "main": [
+        [
+          {
+            "node": "Get a row",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Get a row": {
+      "main": [
+        [
+          {
+            "node": "AI Agent",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "active": false,
+  "settings": {
+    "executionOrder": "v1"
+  },
+  "versionId": "c630c2e0-870f-4ce0-b58a-d27f1cbc68c7",
+  "meta": {
+    "templateCredsSetupCompleted": true,
+    "instanceId": "bec443f32f282145c50b8dcfc610fa7d9dd1cd11f81d464c6dad140e893c49a0"
+  },
+  "id": "zBdZ4dlGxvhwGGrd",
+  "tags": []
+}
